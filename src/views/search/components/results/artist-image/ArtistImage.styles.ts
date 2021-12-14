@@ -1,11 +1,10 @@
-import { Card } from '@mui/material';
 import { styled } from '@mui/system';
 
 interface IProps {
   background?: string;
 }
 
-const ArtistImage = styled(Card)((props: IProps) => ({
+const ArtistImage = styled('div')((props: IProps) => ({
   display: 'flex',
   alignSelf: 'center',
   background: `url(${props.background}) no-repeat center center`,
@@ -15,4 +14,16 @@ const ArtistImage = styled(Card)((props: IProps) => ({
   height: 50,
 }));
 
-export { ArtistImage };
+const Placeholder = styled('div')((props: IProps) => ({
+  display: 'flex',
+  alignSelf: 'center',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '#fff',
+  backgroundColor: 'grey',
+  borderRadius: 50,
+  width: 50,
+  height: 50,
+}));
+
+export { ArtistImage, Placeholder };
