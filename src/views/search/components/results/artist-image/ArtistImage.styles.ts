@@ -4,6 +4,8 @@ interface IProps {
   background?: string;
 }
 
+//Pass prop to custom component and use as background img
+
 const ArtistImage = styled('div')((props: IProps) => ({
   display: 'flex',
   alignSelf: 'center',
@@ -14,7 +16,7 @@ const ArtistImage = styled('div')((props: IProps) => ({
   height: 50,
 }));
 
-const Placeholder = styled('div')((props: IProps) => ({
+const Placeholder = styled('div')({
   display: 'flex',
   alignSelf: 'center',
   alignItems: 'center',
@@ -24,6 +26,6 @@ const Placeholder = styled('div')((props: IProps) => ({
   borderRadius: 50,
   width: 50,
   height: 50,
-}));
+});
 
 export { ArtistImage, Placeholder };

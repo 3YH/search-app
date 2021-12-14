@@ -6,6 +6,7 @@ const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64');
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 const SEARCH_QUERY_ENDPOINT = 'https://api.spotify.com/v1/search';
 
+//Authentication flow: generate access token and use in following request
 const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',

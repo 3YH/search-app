@@ -22,6 +22,7 @@ export default function Search() {
   };
 
   const handleCheckbox = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    //After check event iterate over checks list and update state
     let newArray = [...checks, event.target.value];
     if (checks.includes(event.target.value)) {
       newArray = newArray.filter((type) => type !== event.target.value);
@@ -30,6 +31,7 @@ export default function Search() {
   };
 
   const search = async () => {
+    //Prevent searching instantly OnChange by calling fetch in setTimeout
     if (searchTextTimeout) {
       clearTimeout(searchTextTimeout);
     }
@@ -41,7 +43,6 @@ export default function Search() {
         if (response.ok) {
           const data = response.json();
           const items = await data;
-          console.log(items);
           setResult(items);
         } else {
           Promise.reject(response);
