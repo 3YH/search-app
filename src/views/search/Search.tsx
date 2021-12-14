@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import { getSearchResult } from 'lib/api/spotify';
 import { SearchResult } from 'lib/types/SearchResult';
 import React, { useState } from 'react';
@@ -83,22 +83,28 @@ export default function Search() {
           <SearchIcon />
         </Paper>
         <Box>
-          <input
-            type="checkbox"
-            name="tracks"
-            value="track"
-            onChange={handleCheckbox}
-            defaultChecked
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="tracks"
+                value="track"
+                onChange={handleCheckbox}
+                defaultChecked
+              />
+            }
+            label="Tracks"
           />
-          <label htmlFor="tracks">Tracks</label>
-          <input
-            type="checkbox"
-            name="artist"
-            value="artist"
-            onChange={handleCheckbox}
-            defaultChecked
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="artist"
+                value="artist"
+                onChange={handleCheckbox}
+                defaultChecked
+              />
+            }
+            label="Artists"
           />
-          <label htmlFor="artists">Artists</label>
         </Box>
       </Box>
       <Results result={result} />
