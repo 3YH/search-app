@@ -8,7 +8,6 @@ interface IProps {
 
 export default function ResultTrackCard(props: IProps) {
   const { trackItem } = props;
-  console.log(trackItem);
 
   return (
     <Box display="flex" justifyContent="center" flexDirection="column">

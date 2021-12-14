@@ -1,7 +1,8 @@
-import { Box, Container, Grid } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import { ArtistItem } from 'lib/types/ArtistItem';
 import { SearchResult } from 'lib/types/SearchResult';
 import { TrackItem } from 'lib/types/TrackItem';
+import ResultArtistImage from './artist-image/ArtistImage';
 import ResultTrackCard from './track-card/TrackCard';
 
 interface IProps {
@@ -19,27 +20,33 @@ export default function Results(props: IProps) {
         alignItems: 'center',
       }}
     >
-      <Grid container spacing={2} sx={{ marginBottom: 6 }}>
-        {result && result.tracks && result.tracks?.items.length > 0
-          ? result.tracks?.items.map((item: TrackItem, idx) => (
-              <Grid item xs={4}>
-                <ResultTrackCard trackItem={item} />
-              </Grid>
-            ))
-          : null}
-      </Grid>
+      {result && (
+        <div>
+          <Grid container spacing={2} sx={{ marginBottom: 6 }}>
+            {result.tracks && result.tracks?.items.length > 0 ? (
+              result.tracks?.items.map((item: TrackItem, idx: number) => (
+                <Grid key={idx} item xs={4}>
+                  <ResultTrackCard trackItem={item} />
+                </Grid>
+              ))
+            ) : (
+              <p>No tracks found.</p>
+            )}
+          </Grid>
 
-      <Grid container spacing={1}>
-        {result && result.artists && result.artists.items.length > 0
-          ? result.artists.items.map((item: ArtistItem, idx) => (
-              <Grid item xs={2}>
-                <li key={idx} className="item">
-                  <span className="item-id">{item.name}</span>
-                </li>
-              </Grid>
-            ))
-          : null}
-      </Grid>
+          <Grid container spacing={1}>
+            {result.artists && result.artists.items.length > 0 ? (
+              result.artists.items.map((item: ArtistItem, idx: number) => (
+                <Grid key={idx} item xs={2}>
+                  <ResultArtistImage artistItem={item} />
+                </Grid>
+              ))
+            ) : (
+              <p>No artists found.</p>
+            )}
+          </Grid>
+        </div>
+      )}
     </Container>
   );
 }

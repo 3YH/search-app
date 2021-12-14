@@ -7,9 +7,6 @@ import TopBar from './components/layout/top-bar/TopBar';
 import Results from './components/results/Results';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
 export default function Search() {
@@ -44,10 +41,11 @@ export default function Search() {
         if (response.ok) {
           const data = response.json();
           const items = await data;
-          setResult(items);
           console.log(items);
+          setResult(items);
         } else {
           Promise.reject(response);
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
       }
     }, 800);
@@ -79,7 +77,7 @@ export default function Search() {
             placeholder="Search"
             className="input"
             sx={{ ml: 1, flex: 1 }}
-            inputProps={{ 'aria-label': 'search google maps' }}
+            inputProps={{ 'aria-label': 'search Spotify' }}
           />
           <SearchIcon />
         </Paper>
